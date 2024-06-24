@@ -1,3 +1,9 @@
+import os
+
+KEY = os.environ.get('OPENAI_KEY')
+
+print(KEY)
+
 def Program():
 
     print("Welcome to Python Pokedex!")
