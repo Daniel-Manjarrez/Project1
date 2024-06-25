@@ -1,6 +1,7 @@
 import requests
 import json
 import pandas
+import random
 import sqlalchemy as db
 import pandas as pd
 from datetime import datetime
