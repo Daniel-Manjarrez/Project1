@@ -16,8 +16,9 @@ def fetch_data(api_key, search_query):
         print(f"Error fetching data: {response.status_code}")
         return None
 
+
 if __name__ == '__main__':
-    search_query = '3173903' # This should return "Breaking Bad"
+    search_query = '3173903'  # This should return "Breaking Bad"
 
     # Fetch data from Watchmode API
     data = fetch_data(api_key, search_query)
