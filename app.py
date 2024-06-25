@@ -1,10 +1,7 @@
 import requests
 import json
-import pandas
-import random
 import sqlalchemy as db
 import pandas as pd
-from datetime import datetime
 
 api_key = '8YQ53Ao5sqOGEq826OfsK3PqOEQBWY36Iv0KJsTx'
 base_url = 'https://api.watchmode.com/v1/title/'
@@ -21,8 +18,12 @@ def fetch_data(api_key, search_query):
 
 
 if __name__ == '__main__':
-    search_query = '3173903'  # This should return "Breaking Bad"
+    
+    df = pd.read_csv('title_id_map.csv', dtype={'Year': 'string'})
+    title = input("Please enter a movie title: ")
+    results = df[df['Title'] == title]
+    id = int(results['Watchmode ID'].iloc[0])
 
     # Fetch data from Watchmode API
-    data = fetch_data(api_key, search_query)
-    print(data)
+    data = fetch_data(api_key, id)
+    print(data['similar_titles'])
