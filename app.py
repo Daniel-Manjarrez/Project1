@@ -7,6 +7,7 @@ from datetime import datetime
 api_key = '8YQ53Ao5sqOGEq826OfsK3PqOEQBWY36Iv0KJsTx'
 base_url = 'https://api.watchmode.com/v1/title/'
 
+
 def fetch_data(api_key, search_query):
     url = f"{base_url}{search_query}/details/?apiKey={api_key}"
     response = requests.get(url)
