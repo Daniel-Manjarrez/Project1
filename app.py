@@ -1,5 +1,6 @@
 import requests
 import json
+import pandas
 import sqlalchemy as db
 import pandas as pd
 from datetime import datetime
