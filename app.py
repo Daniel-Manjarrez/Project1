@@ -26,4 +26,11 @@ if __name__ == '__main__':
 
     # Fetch data from Watchmode API
     data = fetch_data(api_key, id)
-    print(data['similar_titles'])
+    #print(data['similar_titles'])
+
+    #print()
+
+    for title_id in data['similar_titles']:
+        title_result = df[df['Watchmode ID'] == title_id]
+        title_print = title_result['Title'].iloc[0]
+        print(title_print)
