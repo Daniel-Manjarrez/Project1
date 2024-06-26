@@ -18,7 +18,7 @@ def fetch_data(api_key, search_query):
 
 
 if __name__ == '__main__':
-    
+
     df = pd.read_csv('title_id_map.csv', dtype={'Year': 'string'})
     title = input("Please enter a movie title: ")
     results = df[df['Title'] == title]
