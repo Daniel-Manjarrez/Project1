@@ -7,43 +7,70 @@
     var elapsed_time = parseFloat("{{ elapsed_time }}").toFixed(2);
     console.log("Current time:", current_time);
     console.log("Elapsed time:", elapsed_time, "minutes");
+
+    // function getTrailerThumbnail(trailerUrl) {
+    //     if (!trailerUrl) return '';
+    //     const url = new URL(trailerUrl);
+    //     const videoId = url.searchParams.get('v');
+    //     return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : '';
+    // }
 </script>
 
-<br>
+<div class="container mt-5">
+    <!-- Title Section -->
+    <div class="text-center mb-4">
+        <h1>Recommendations Based On {{ title }}</h1>
+    </div>
 
-<!-- Top Rated Kdramas to Watch-->
-<!-- Remember, this is wrapped in a container -->
-<h1>
-    Recommendations Based On {{ title }}
-</h1>
+    <!-- Introduction Section -->
+    <div class="text-center mb-4">
+        <span class="intro"><i>The following are your generated recommendations.</i></span>
+    </div>
 
-<br>
-
-<div>
-    <span class="intro"><i>The following are your generated recommendations.</i></span>
-</div>
-
-<br>
-
-<div class="row">
-    {% for movie in items %}
-    <div class="col-md-4 d-flex align-items-stretch"> <!-- Make each column flex and stretch to fill the height -->
-        <div class="card mb-4" style="width: 100%;"> <!-- Use mb-4 for consistent spacing, adjust '4' as needed -->
-            <!-- Wrap the image in an <a> tag to make it clickable -->
-            <a href="/overview/{{ movie.title }}">
-                <img src="{{ movie.backdrop }}" class="card-img-top image-modified" alt="{{ item.poster }}">
-            </a>
-            <div class="card-body d-flex flex-column"> <!-- Make card-body a flex container -->
-                <h5 class="card-title">{{ movie.title }}</h5>
-                <!-- Genres -->
-                <p class="card-text"><strong>Genre:</strong> {{ movie.genre_names|join(', ') }}</p>
-                <!-- Actors -->
-                <p class="card-text"><strong>Runtime:</strong> {{ movie.runtime_minutes }} minutes</p>
-                <a href="/overview/{{ movie.title }}" class="btn btn-primary mt-auto">Learn More</a> <!-- mt-auto pushes the button down -->
+    <!-- Movie Recommendations Section -->
+    <div class="row">
+        {% for movie in items %}
+        <div class="col-md-4 d-flex align-items-stretch mb-4">
+            <div class="card" style="width: 100%;">
+                <!-- Wrap the image in an <a> tag to make it clickable -->
+                <a href="/overview/{{ movie.title }}">
+                    <img 
+                        src="{{ movie.backdrop if movie.backdrop else movie.poster }}" 
+                        class="card-img-top image-modified" 
+                        alt="{{ movie.title }}">
+                </a>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text"><strong>Genre:</strong> {{ movie.genre_names|join(', ') }}</p>
+                    <p class="card-text"><strong>Runtime:</strong> {{ movie.runtime_minutes }} minutes</p>
+                    <a href="/overview/{{ movie.title }}" class="btn btn-primary mt-auto">Learn More</a>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+
+    <!-- Detailed Information Section (fix the data retrieval)
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{ title.backdrop }}" class="card-img" alt="{{ title.title }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ title.title }}</h3>
+                            <p class="card-text"><strong>Summary:</strong> {{ title.summary }}</p>
+                            <p class="card-text"><strong>Year:</strong> {{ title.year }}</p>
+                            <p class="card-text"><strong>Runtime:</strong> {{ title.runtime_minutes }} minutes</p>
+                            <p class="card-text"><strong>Score:</strong> {{ title.score }} / 10</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 </div>
 
 {% endblock %}

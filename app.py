@@ -104,6 +104,7 @@ def summaries(similar_movies):
         return lesser_list
     else:
         return []
+
 def convert_to_embedded_link(link):
     video_id = link.split('v=')[1]
     embedded_link = f'https://www.youtube.com/embed/{video_id}'
@@ -258,7 +259,7 @@ def learn(title):
     # Read the CSV file
     df = pd.read_csv(csv_file_path, dtype={'Year': 'string'})
     current_time = datetime.now()
-    elapsed_time = get_elapsed_time();
+    elapsed_time = get_elapsed_time()
     
     suggested_titles = generate(title)
     titles_data = []
