@@ -160,3 +160,13 @@ input[type="text"]::placeholder {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+.sum-close {
+    position: relative;
+    top: -8px;
+}
+
+.ratings {
+    position: relative;
+    bottom: -10px;
+}

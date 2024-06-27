@@ -22,8 +22,15 @@
 
     <!-- Movie Details Section -->
     <div class="row">
-        <div class="col-12 mb-3">
+        <div class="col-6 mb-3">
             <h2>{{ movie.title }}</h2>
+        </div>
+        <div class="col-6 mb-3 ratings">
+            <i>
+                <b>Movie Rating:</b> {{ movie.us_rating }} 
+                <b>User Score:</b> {{ movie.user_rating }} / 10 
+                <b>Critic Score:</b> {{ movie.critic_score }} %
+            </i>
         </div>
 
         <div class="col-md-6 mb-3">
@@ -36,17 +43,8 @@
             {% endif %}
         </div>
 
-        <div class="col-md-6 mb-3">
+        <div class="col-md-6 mb-3 sum-close">
             <p>{{ sum }}</p>
-        </div>
-    </div>
-    <div class="row ratings">
-        <div class="col-12 mt-3 ratings">
-            <i>
-                <b>Movie Rating:</b> {{ movie.us_rating }}<br>
-                <b>User Score:</b> {{ movie.user_rating }} / 10<br>
-                <b>Critic Score:</b> {{ movie.critic_score }} %
-            </i>
         </div>
     </div>
 </div>
